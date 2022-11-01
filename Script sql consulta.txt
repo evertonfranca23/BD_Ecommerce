@@ -1,0 +1,32 @@
+Traga todos os prdutos quando a categoria for eletronico.
+SELECT * FROM produtos,
+	WHERE Categoria = Eletrônico;
+
+Ordene de forma decrescente compras de brinquedos.
+SELECT * FROM vendas,
+	WHERE Categoria = Brinquedos,
+	ORDER BY brinquedos DESC;
+
+Filtre os clientes que fizeram compras com pagamento via PIX.
+
+SELECT Cliente.Pnome, Pagamento.tipoPagamento
+	FROM cliente.Pnome
+	WHERE Pagamento.tipoPagamento = 'PIX'
+	GROUP BY Cliente.Pnome
+	HAVING Pagamento.tipoPagamento
+
+Conte quanto brinquedo ha no estoque
+
+SELECT Produto.Categoria, Produto.Descrição
+	FROM Produto.Descrição
+	WHERE Produto.Descrição = 'Brinquedos'
+	HAVING COUNT(Produto.Descrição)	
+	GROUP BY COUNT(Produto.Descrição)
+
+Faça uma junção entre a tabela cliente e vendas para saber qual 
+cliente pagou com cartao de credito.
+
+SELECT Cliente.Pnome, Pagamento.tipoPagamento
+	FROM Clientes
+	FULL OUTER JOIN Pagamento ON Cliente.Pnome = Pagamento.tipoPagamento AND Pagamento.tipoPagamento = 'Credito'
+	ORDER BY Pagamento.tipoPagamento;
